@@ -51,9 +51,20 @@ class _AssignedPageState extends State<AssignedPage> {
           drawer: PlastikatDrawer(),
           appBar: PlastikatBar(),
           body: isLoaded? SingleChildScrollView(
-            padding: EdgeInsets.only(top: 20),
+            padding: const EdgeInsets.only(top: 20),
               child: Column(
                 children: [
+                  if(assigned.isEmpty)
+                    const Center(
+                        child: Text("You haven't been assigned to offers yet",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: 'comfortaa',
+                            fontWeight: FontWeight.w300,
+                          ),)
+                    )
+                  else
                   ...assigned.map((offer) {
                     i = i!+1;
                     return Padding(

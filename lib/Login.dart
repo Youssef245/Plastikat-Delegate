@@ -133,6 +133,8 @@ class _LoginState extends State<Login> {
               key: 'gender', value: userInformation['data']['gender']);
           await globals.user.write(
               key: 'rating', value: userInformation['data']['rating'].toString());
+          await globals.user.write(
+              key: 'login', value: "true");
 
           final DelegateService service = DelegateService(result!.accessToken!);
           FirebaseMessaging _fcm = FirebaseMessaging.instance;
@@ -179,6 +181,8 @@ class _LoginState extends State<Login> {
 
   Future<void> logoutAction() async {
     await globals.secureStorage.delete(key: 'refresh_token');
+    await globals.user.write(
+        key: 'login', value: "false");
     setState(() {
       isLoggedIn = false;
       isBusy = false;

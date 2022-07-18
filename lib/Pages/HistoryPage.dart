@@ -52,6 +52,17 @@ class _HistoryPageState extends State<HistoryPage> {
                 padding: const EdgeInsets.only(top: 20.0),
                 child: Column(
                   children: [
+                    if(history.isEmpty)
+                      const Center(
+                          child: Text("You have no history offers yet",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontFamily: 'comfortaa',
+                              fontWeight: FontWeight.w300,
+                            ),)
+                      )
+                    else
                     ...history.map((offer) {
                       i = i!+1;
                       return Padding(
